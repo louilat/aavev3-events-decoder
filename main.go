@@ -52,6 +52,7 @@ func DailyEtl(day time.Time, accessKeyID, secretAccessKey string) {
 
 	// d := decoder.DecodeBalanceTransfer(rawEvents[3725])
 	// fmt.Println(d)
+
 	fmt.Println("Decoding raw events...")
 	allDecodedEvents := decoder.DecodedEventsCollection{}
 	eventsCodes := decoder.GetAllEventsCodes()
