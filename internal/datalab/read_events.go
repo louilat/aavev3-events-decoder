@@ -9,7 +9,7 @@ import (
 )
 
 func ReadRawEvents(endpoint, bucket, key, accessKeyID, secretAccessKey string) ([]types.Log, error) {
-	useSSL := false
+	useSSL := true
 
 	minioClient, err := minio.New(endpoint, accessKeyID, secretAccessKey, useSSL)
 	if err != nil {

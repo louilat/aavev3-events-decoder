@@ -12,12 +12,14 @@ func main() {
 	accessKeyID := os.Getenv("ACCESS_KEY_ID")
 	secretAccessKey := os.Getenv("SECRET_ACCESS_KEY")
 
-	start := time.Date(2025, 7, 1, 0, 0, 0, 0, time.UTC)
-	stop := time.Date(2025, 8, 14, 0, 0, 0, 0, time.UTC)
-	for day := start; day.Before(stop); day = day.AddDate(0, 0, 1) {
-		DailyEtl(day, accessKeyID, secretAccessKey)
-	}
-
+	// start := time.Date(2025, 7, 1, 0, 0, 0, 0, time.UTC)
+	// stop := time.Date(2025, 8, 14, 0, 0, 0, 0, time.UTC)
+	// for day := start; day.Before(stop); day = day.AddDate(0, 0, 1) {
+	// 	DailyEtl(day, accessKeyID, secretAccessKey)
+	// }
+	ref := time.Now().UTC().AddDate(0, 0, -21)
+	snapshotDay := time.Date(ref.Year(), ref.Month(), ref.Day(), 0, 0, 0, 0, time.UTC)
+	DailyEtl(snapshotDay, accessKeyID, secretAccessKey)
 }
 
 func DailyEtl(day time.Time, accessKeyID, secretAccessKey string) {
